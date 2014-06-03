@@ -1,21 +1,40 @@
-// centers an img tag relative to its parent
-// the parent MUST have a fixed width and height
-// so in the case of 
+// Centers an <img> tag relative to its parent
+// the parent MUST have a fixed width and height.
+// So in the case of 
 // div a img {}
 // ensure the <a> height is manually defined
-// instead of being determined by the img it contains.
+// instead of being determined by the image it contains.
 function centerImage( image )
 {
-	var $image = $(image);
+	if(image.tagName.toLowerCase() != 'img'){ return; }
 
-	var area = $image.parent();
-	
-	var $areaW = area.width();
-	var $areaH = area.height();
-	
-	var $imageWidth = image.width;
+	var $image = $(image);
+	// Measure the size at which the image is displayed,
+	// not the intrinsic size of the image file itself.
+	var $imageWidth  = image.width;
 	var $imageHeight = image.height;
 
+	var area = $image.parent();
+	// Size of the image's parent element.
+	// Only works if the size is explicitly set in pixels or 100% of some grandparent element.
+	var $areaW = area.width();
+	var $areaH = area.height();
+
+	// Measure and set the orientation of the image: portrait or landscape
+	if( $imageWidth  < $imageHeight ){ $image.addClass('portrait'); }
+	if( $imageWidth  > $imageHeight ){ $image.addClass('landscape'); }
+	
+	// Determine and indicate if it is smaller than the parent area.
+	if( $imageWidth  < $areaW ){ $image.addClass('tooNarrow'); }
+	if( $imageHeight < $areaH ){ $image.addClass('tooShort'); }
+	
+	// Assigning the tooShort or tooNarrow classes 
+	// will have changed the width and height of some images
+	// so re-measure the image size before centering.
+	$imageWidth  = image.width;
+	$imageHeight = image.height;
+	
+	// Position the image in the center of its parent.
 	var $left = 0;
 	if( $areaW < $imageWidth )
 	{
