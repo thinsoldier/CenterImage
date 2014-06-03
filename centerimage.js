@@ -8,6 +8,13 @@ function centerImage( image )
 {
 	if(image.tagName.toLowerCase() != 'img'){ return; }
 
+// 	image.style.position = 'relative';
+// 	image.style.top = '0px';
+// 	image.style.left = '0px';
+// 	image.style.transition = 'top 1s, left 1s';
+
+
+
 	var $image = $(image);
 	// Measure the size at which the image is displayed,
 	// not the intrinsic size of the image file itself.
