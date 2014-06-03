@@ -6,6 +6,7 @@
 // instead of being determined by the image it contains.
 function centerImage( image )
 {
+	var $ = jQuery;
 	if(image.tagName.toLowerCase() != 'img'){ return; }
 
 // 	image.style.position = 'relative';
