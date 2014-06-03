@@ -35,6 +35,7 @@ function centerImage( image )
 	// Measure and set the orientation of the image: portrait or landscape
 	if( $imageWidth  < $imageHeight ){ $image.addClass('portrait'); }
 	if( $imageWidth  > $imageHeight ){ $image.addClass('landscape'); }
+	if( $imageWidth  === $imageHeight ){ $image.addClass('square'); }
 	
 	// B1
 	// Assigning the classes might have changed
