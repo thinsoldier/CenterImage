@@ -17,6 +17,10 @@ function centerImage( image )
 
 
 	var $image = $(image);
+	
+	// re re-applying centering to something previously centered we need to clear out and start from scratch.
+	$image.removeAttr('class style');
+
 	// A0
 	// Measure the size at which the image is displayed,
 	// not the intrinsic size of the image file itself.
