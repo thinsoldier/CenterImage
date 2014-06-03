@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" href="example.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="centerimage.js"></script>
+
+<script>
+$(document).ready(function(){
+	$('.trigger').click(function(e){
+		$('img').each(function(i,e){
+			centerImage(e);
+		});
+	});	
+});
+</script>
+
+</head>
+<body>
+
+<div id="controls">
+	<button class="trigger">Center Images</button>
+</div>
+
+
+<div class="sidebyside">
+	<div id="main1" class="mainphoto">
+		<img src="http://lorempixel.com/640/480/cats/9">
+	</div>
+
+	<div id="main2" class="mainphoto">
+		<img src="http://lorempixel.com/480/640/cats/10">
+	</div>
+</div>
+
+
+<ul id="thumbs">
+	<li>
+		<a href="#"><img src="http://lorempixel.com/250/110/cats/10"></a>
+	</li>
+	<li>
+		<a href="#"><img src="http://lorempixel.com/320/240/cats/9"></a>
+	</li>
+	<li>
+		<a href="#"><img src="http://lorempixel.com/480/640/cats/10"></a>
+	</li>
+	<li>
+		<a href="#"><img src="http://lorempixel.com/320/240/cats/8"></a>
+	</li>
+	<li>
+		<a href="#"><img src="http://lorempixel.com/320/240/cats/7"></a>
+	</li>
+	<li>
+		<a href="#"><img class="test-narrow" src="http://lorempixel.com/130/120/cats/5"></a>
+	</li>
+</ul>
+
+
+
+</body>
+</html>

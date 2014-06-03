@@ -1,0 +1,92 @@
+* { box-sizing: border-box; }
+
+html, body {
+margin:0; padding: 0;
+}
+
+body {
+max-width: 1400px;
+margin: auto;
+}
+
+#controls {
+background: #eee;
+padding: 1rem;
+display: flex;
+justify-content: center;
+margin: 1rem 0;
+}
+
+.sidebyside {
+display: flex;
+justify-content: space-between;
+margin-bottom: 1rem;
+}
+
+
+.mainphoto {
+	width: 49.6%;
+	height: 340px;
+	overflow: hidden;
+	background: #eee;
+}
+
+.mainphoto img {
+display:block;
+margin: 0 auto;
+width: 100%;
+max-width: 100%;
+min-height: 100%;
+}
+
+
+#thumbs {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	list-style: none;
+	margin: 0;
+	padding:0;
+	background: #666;
+	padding: 5px;
+}
+
+#thumbs li {
+width: 150px;
+height: 80px;
+overflow: hidden;
+background: #ccc;
+}
+
+#thumbs li a {
+position: relative; /*http://snook.ca/archives/html_and_css/position_relative_overflow_ie/*/
+display: block;
+width: 100%;
+height: 100%;
+overflow: hidden;
+}
+
+
+#thumbs li a img{
+display: block;
+max-width: 100%;
+margin: auto;
+}
+
+
+#thumbs img.tooNarrow {
+width: 100%;
+}
+
+#thumbs img.tooShort {
+height: 100%;
+width: auto;
+max-width: none;
+}
+
+.mainphoto img, #thumbs img {
+position:relative;
+top: 0px;
+left:0px;
+transition: 2s;
+}
