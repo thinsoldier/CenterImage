@@ -4,12 +4,14 @@
 // div a img {}
 // ensure the <a> height is manually defined
 // instead of being determined by the img it contains.
-function centerImage(image)
+function centerImage( image )
 {
-	var area = image.up();
+	var $image = $(image);
+
+	var area = $image.parent();
 	
-	var $areaW = area.getWidth();
-	var $areaH = area.getHeight();
+	var $areaW = area.width();
+	var $areaH = area.height();
 	
 	var $imageWidth = image.width;
 	var $imageHeight = image.height;
@@ -27,7 +29,7 @@ function centerImage(image)
 		var $top = $areaH - $imageHeight;	
 		$top = Math.round($top /2);
 	}
-		
+	
 	image.style.position = 'relative';
 	image.style.top = $top + 'px';
 	image.style.left = $left + 'px';
