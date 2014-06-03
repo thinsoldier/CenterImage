@@ -16,10 +16,13 @@ function centerImage( image )
 
 
 	var $image = $(image);
+	// A0
 	// Measure the size at which the image is displayed,
 	// not the intrinsic size of the image file itself.
-	var $imageWidth  = image.width;
-	var $imageHeight = image.height;
+	var $imageWidth  = image.clientWidth;
+	var $imageHeight = image.clientHeight;
+	
+	// console.log('1st W H', $imageWidth, $imageHeight, image);
 
 	var area = $image.parent();
 	// Size of the image's parent element.
@@ -27,19 +30,35 @@ function centerImage( image )
 	var $areaW = area.width();
 	var $areaH = area.height();
 
+	// A1
 	// Measure and set the orientation of the image: portrait or landscape
 	if( $imageWidth  < $imageHeight ){ $image.addClass('portrait'); }
 	if( $imageWidth  > $imageHeight ){ $image.addClass('landscape'); }
 	
+	// B1
+	// Assigning the classes might have changed
+	// the width and height of some images
+	// so re-measure the image size before centering.
+	$imageWidth  = image.clientWidth;
+	$imageHeight = image.clientHeight;
+	
+	// console.log('2nd W H', $imageWidth, $imageHeight, image);
+
+	
+	// A2
 	// Determine and indicate if it is smaller than the parent area.
 	if( $imageWidth  < $areaW ){ $image.addClass('tooNarrow'); }
 	if( $imageHeight < $areaH ){ $image.addClass('tooShort'); }
 	
-	// Assigning the tooShort or tooNarrow classes 
-	// will have changed the width and height of some images
+	// B2
+	// Assigning the classes might have changed
+	// the width and height of some images
 	// so re-measure the image size before centering.
-	$imageWidth  = image.width;
-	$imageHeight = image.height;
+	$imageWidth  = image.clientWidth;
+	$imageHeight = image.clientHeight;
+	
+	// console.log('3rd W H', $imageWidth, $imageHeight, image);
+	
 	
 	// Position the image in the center of its parent.
 	var $left = 0;
@@ -59,4 +78,10 @@ function centerImage( image )
 	image.style.position = 'relative';
 	image.style.top = $top + 'px';
 	image.style.left = $left + 'px';
+	
+	jQuery.event.trigger({
+			type: "centerImageFinished",
+			image: image,
+			time: new Date()
+		});
 }
