@@ -19,7 +19,8 @@ function centerImage( image )
 	var $image = $(image);
 	
 	// re re-applying centering to something previously centered we need to clear out and start from scratch.
-	$image.removeAttr('class style');
+	$image.removeAttr('style');
+	$image.removeClass('portrait landscape square tooNarrow tooShort');
 
 	// A0
 	// Measure the size at which the image is displayed,

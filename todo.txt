@@ -1,0 +1,5 @@
+Needs examples of:
+center images after all images are loaded.
+after each image is loaded individually.
+
+Needs test case for running immediately when document.ready happens, which prematurely tries centering before the image is loaded which is before it can be measured properly.
