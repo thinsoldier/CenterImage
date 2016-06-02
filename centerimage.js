@@ -1,3 +1,29 @@
+//You need an anonymous function to wrap around your function to avoid conflict
+(function($){
+
+  //Attach this new method to jQuery
+  $.fn.extend({ 
+
+    //This is where you write your plugin's name
+    centerImage: function() {
+
+      //Iterate over the current set of matched elements
+      return this.each(function( index, element) {
+
+        //code to be inserted here
+        centerImage( element );
+
+      });
+  	}
+  });
+	
+//pass jQuery to the function, 
+//So that we will able to use any valid Javascript variable name 
+//to replace "$" SIGN. But, we'll stick to $, I like dollar sign.
+})(jQuery);
+
+
+
 // Centers an <img> tag relative to its parent
 // the parent MUST have a fixed width and height.
 // So in the case of 
